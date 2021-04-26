@@ -1,3 +1,8 @@
+import sys
+sys.path.append("./")
+import django
+django.setup()
+
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -37,3 +42,10 @@ class BlogTest(TestCase):
         self.assertEqual(no_response.status_code, 404)
         self.assertEqual(response, 'A good title')
         self.assertTemplateUsed(response, 'post_detail.html')
+
+
+    def test_post_edit_view(self):
+        response = self.client.get("post/1/edit")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Nice Body')
+        self.assertTemplateUsed(response, 'home.html')
