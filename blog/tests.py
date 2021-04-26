@@ -30,10 +30,10 @@ class BlogTest(TestCase):
         self.assertEqual(f'{self.post.body}', 'Nice Body')
 
     def test_post_list_view(self):
-        response = self.client.get(reverse('home'))
+        response = self.client.get(reverse('blog_home'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Nice Body')
-        self.assertTemplateUsed(response, 'home.html')
+        self.assertTemplateUsed(response, 'blog_home.html')
 
     def test_post_detail_views(self):
         response = self.client.get("post/1")
@@ -48,4 +48,4 @@ class BlogTest(TestCase):
         response = self.client.get("post/1/edit")
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Nice Body')
-        self.assertTemplateUsed(response, 'home.html')
+        self.assertTemplateUsed(response, 'blog_home.html')

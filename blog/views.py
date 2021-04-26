@@ -6,7 +6,8 @@ from .models import Post
 
 class BlogListView(ListView):
     model = Post
-    template_name = "home.html"
+    template_name = "blog_home.html"
+    context_object_name = "blog_posts_list" # replace object_list in html
 
 
 class BlogDetailView(DetailView):
@@ -29,4 +30,4 @@ class BlogUpdateView(UpdateView):
 class BlogDeleteView(DeleteView):
     model = Post
     template_name = "post_delete.html"
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("blog_home")
