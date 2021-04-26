@@ -1,4 +1,5 @@
 asgiref==3.3.4
+decouple==0.0.7
 Django==3.2
 gunicorn==20.1.0
 python-dotenv==0.17.0
