@@ -1,17 +1,17 @@
 import sys
-sys.path.append("./")
-import django
-django.setup()
-
+# import django
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from blog.models import Post
+#
+# sys.path.append("./")
+# django.setup()
 
 
 class BlogTest(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username="testUser", email="testemail.gmail.com",
+        self.user = get_user_model().objects.create_user(username="testUser", email="testmail.gmail.com",
                                                          password="Password")
 
         self.post = Post.objects.create(
@@ -36,16 +36,12 @@ class BlogTest(TestCase):
         self.assertTemplateUsed(response, 'blog_home.html')
 
     def test_post_detail_views(self):
-        response = self.client.get("post/1")
+        # response = self.client.get(f"post/{self.post.pk}/") #Replaced with reverse url below
+        url = reverse('post_detail', kwargs={'pk': self.post.pk})
+        response = self.client.get(url)
         no_response = self.client.get('post/180000/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(no_response.status_code, 404)
-        self.assertEqual(response, 'A good title')
-        self.assertTemplateUsed(response, 'post_detail.html')
-
-
-    def test_post_edit_view(self):
-        response = self.client.get("post/1/edit")
-        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Good Test Title')
         self.assertContains(response, 'Nice Body')
-        self.assertTemplateUsed(response, 'blog_home.html')
+        self.assertTemplateUsed(response, 'post_detail.html')
