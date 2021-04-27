@@ -17,11 +17,11 @@ The live site is accesible from https://ziwa.herokuapp.com/
 * The project is developed and tested using Python - 3.8.5 on ubuntu 20 OS but should work on other environments too.
 
 ### Virtual environment
-mkdir <project_directory>
-cd <project_directory>
-pip install virtualenv
-virtualenv env venv
-source venv/bin/activate
+* mkdir <project_directory>
+* cd <project_directory>
+* pip install virtualenv
+* virtualenv env venv
+* source venv/bin/activate
 
 ### Cloning the repository
 * git clone https://github.com/kennedynjoroge/ziwa.git
