@@ -5,7 +5,10 @@
 	<h2>{{blog_post_detail.title}}</h2>
 	<p>{{blog_post_detail.body}}</p>
 </div>
-<p><a href="{% url 'post_edit' blog_post_detail.pk %}">Edit Blog Post</a></p>
-<p><a href="{% url 'post_delete' blog_post_detail.pk %}">Delete Blog Post</a></p>
+<div class="card-footer text-center text-muted">
+	<a href="{% url 'post_edit' blog_post_detail.pk %}">Edit</a> |
+		<a href="{% url 'post_delete' blog_post_detail.pk %}">Delete</a>
+</div>
+<p>Back to <a href="{% url 'blog_home' %}">All Blog Posts</a>.</p>
 
 {% endblock %}

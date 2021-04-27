@@ -1,10 +1,33 @@
 {% extends "base.html" %}
 {% block title %}Blog Home{% endblock title %}
+
 {% block content %}
+<div class="jumbotron">
+	<h1 class="display-4">Django for Beginners</h1>
+	<p class="lead">A blog built using Django for Django learners.</p>
+	</p>
+</div>
 {% for post in blog_posts_list %}
-<div class="post-entry">
-	<h2><a href="{% url 'post_detail' post.pk %}">{{post.title}}</a></h2>
-	<p>{{ post.body }}</p>
+
+<div class="card">
+	<div class="card-header">
+		<span class="font-weight-bold"><a href="{% url 'post_detail' post.pk %}">{{post.title}}</a></span>
+		<span class="text-muted">by {{ post.author }} | {{ post.date }}</span>
+	</div>
+	<div class="card-body">
+		{{ post.body }}
+	</div>
+	<div class="card-footer">
+		{% for comment in post.comments.all %}
+		<p>
+		<span class="font-weight-bold">
+			{{ comment.author }} &middot;
+		</span>
+			{{ comment }}
+		</p>
+		{% endfor %}
+	</div>
+
 </div>
 {% endfor %}
 {% endblock %}

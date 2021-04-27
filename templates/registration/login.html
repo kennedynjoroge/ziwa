@@ -7,4 +7,6 @@
 	{{form.as_p}}
 	<button class="btn btn-success ml-2" type="submit">Log In</button>
 </form>
+<div><p>Forgot your password? <a href="{% url 'password_reset' %}">click here</a></p></div>
+<div><p>New user? <a href="{% url 'signup' %}">create new account</a></p></div>
 {% endblock content %}
