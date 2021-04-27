@@ -45,11 +45,12 @@ The following libraries are required
 * whitenoise==5.2.0
 
 ### Running Tests
-python3.6 manage.py test
+python manage.py test
 
-## Known Bugs
+## Known Bugs/WIP tasks
 * The comment functionality is currently working from /admin site only. 
 * The whole post is being displayed on main page. Should display only a small snippet and provide read more link.
+* Unit tests for user management pending.
 
 ## Technologies Used
 * Source code editor - pycharm
