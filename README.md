@@ -9,7 +9,7 @@ This web application allows a user to:
 * For forgetten passwords, initiate password reset via an email notification prompt.
 * Change password
 
-##Demo
+## Demo
 The live site is accesible from https://ziwa.herokuapp.com/
 
 ## Installation
