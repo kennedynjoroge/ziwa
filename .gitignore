@@ -3,8 +3,12 @@
 __pycache__
 venv/
 db.sqlite3
+.env
 #/static
 .DS_Store
+
+# Heroku
+Procfile
 
 # Backup files #
 *.bak
@@ -32,6 +36,3 @@ db.sqlite3
 # mypy
 .mypy_cache/
 
-# Heroku
-Procfile
-.env
