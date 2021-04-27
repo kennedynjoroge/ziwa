@@ -1,5 +1,5 @@
 body {
-    font-family: "Source Sams Pro", san;
+    font-family: "Source Sans Pro", sans-serif;
     font-size: 18px
 }
 
@@ -19,9 +19,8 @@ header h1 a{
 }
 
 .nav-right {
-        /*margin-right: auto*/
     display: flex;
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
 .post-entry{
@@ -29,7 +28,7 @@ header h1 a{
 }
 
 post-entry h2{
-    margin: 0.5rem
+    margin: 0.5rem 0;
 }
 
 .post-entry h2 a,

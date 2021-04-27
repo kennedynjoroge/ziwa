@@ -13,6 +13,7 @@ class BlogListView(ListView):
 class BlogDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
+    context_object_name = "blog_post_detail"
 
 
 class BlogCreateView(CreateView):
