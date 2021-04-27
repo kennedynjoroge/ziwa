@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    # 3rd Party
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'whitenoise.runserver_nostatic',
+    # local
     # 'user_manager.apps.UserManagerConfig',
     'blog',
     'accounts',
@@ -134,3 +138,8 @@ django_heroku.settings(locals())
 
 LOGIN_REDIRECT_URL = "blog_home"
 LOGOUT_REDIRECT_URL = "blog_home"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+# CRISPY_TEMPLATE_PACK = "bootstrap4" # Test with bootstrap5 too
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

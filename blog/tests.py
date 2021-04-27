@@ -1,38 +1,40 @@
 import sys
-# import django
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from blog.models import Post
-#
-# sys.path.append("./")
-# django.setup()
 
 
 class BlogTest(TestCase):
+    user_name = "testUser"
+    email_address = "testmail.gmail.com"
+    user_password = "191Pass"
+    blog_title = "Good Test Title"
+    blog_body = "Nice Body"
+
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username="testUser", email="testmail.gmail.com",
-                                                         password="Password")
+        self.user = get_user_model().objects.create_user(username=self.user_name, email=self.email_address,
+                                                         password=self.user_password)
 
         self.post = Post.objects.create(
-            title="Good Test Title",
-            body="Nice Body",
+            title=self.blog_title,
+            body=self.blog_body,
             author=self.user
         )
 
     def test_string_representation(self):
-        post = Post(title="A simple title")
+        post = Post(title=self.blog_title)
         self.assertEqual(str(post), post.title)
 
     def test_post_content(self):
-        self.assertEqual(f'{self.post.title}', 'Good Test Title')
-        self.assertEqual(f'{self.post.author}', 'testUser')
-        self.assertEqual(f'{self.post.body}', 'Nice Body')
+        self.assertEqual(f'{self.post.title}', self.blog_title)
+        self.assertEqual(f'{self.post.author}', self.user_name)
+        self.assertEqual(f'{self.post.body}', self.blog_body)
 
     def test_post_list_view(self):
         response = self.client.get(reverse('blog_home'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Nice Body')
+        self.assertContains(response, self.blog_body)
         self.assertTemplateUsed(response, 'blog_home.html')
 
     def test_post_detail_views(self):
@@ -42,19 +44,19 @@ class BlogTest(TestCase):
         no_response = self.client.get('post/180000/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(no_response.status_code, 404)
-        self.assertContains(response, 'Good Test Title')
-        self.assertContains(response, 'Nice Body')
+        self.assertContains(response, self.blog_title)
+        self.assertContains(response, self.blog_body)
         self.assertTemplateUsed(response, 'post_detail.html')
 
     def test_post_create_view(self):  # new
         response = self.client.post(reverse('post_new'), {
-            'title': 'New title',
-            'body': 'New text',
+            'title': self.blog_title,
+            'body': self.blog_body,
             'author': self.user.id,
         })
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Post.objects.last().title, 'New title')
-        self.assertEqual(Post.objects.last().body, 'New text')
+        self.assertEqual(Post.objects.last().title, self.blog_title)
+        self.assertEqual(Post.objects.last().body, self.blog_body)
 
     def test_post_update_view(self):  # new
         response = self.client.post(reverse('post_edit', args='1'), {
