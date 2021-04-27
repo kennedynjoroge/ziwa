@@ -30,19 +30,19 @@ The live site is accesible from https://ziwa.herokuapp.com/
 pip3 install -r requirements
 
 The following libraries are required
-asgiref==3.3.4
-crispy-bootstrap5==0.3.1
-dj-database-url==0.5.0
-Django==3.2
-django-crispy-forms==1.11.2
-django-heroku==0.3.1
-gunicorn==20.1.0
-psycopg2==2.8.6
-python-decouple==3.4
-python-dotenv==0.17.0
-pytz==2021.1
-sqlparse==0.4.1
-whitenoise==5.2.0
+* asgiref==3.3.4
+* crispy-bootstrap5==0.3.1
+* dj-database-url==0.5.0
+* Django==3.2
+* django-crispy-forms==1.11.2
+* django-heroku==0.3.1
+* gunicorn==20.1.0
+* psycopg2==2.8.6
+* python-decouple==3.4
+* python-dotenv==0.17.0
+* pytz==2021.1
+* sqlparse==0.4.1
+* whitenoise==5.2.0
 
 ### Running Tests
 python3.6 manage.py test
